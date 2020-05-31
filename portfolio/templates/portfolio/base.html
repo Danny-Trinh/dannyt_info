@@ -74,14 +74,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		<!-- Nav -->
 		<nav id="nav">
 			<ul class="links">
-				<li class="active"><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'home' %}">Home</a></li>
 				<li><a href="{% url 'forums' %}">Forums</a></li>
 			</ul>
-			<ul class="icons links" >
+			<ul class="links" style="flex-grow: 0">
 				{% if user.is_authenticated %}
-					<li><a class="nav-item nav-link" href="">New Post</a></li>
-					<li><a class="nav-item nav-link" href="{% url 'profile'%}">Profile</a></li>
-					<li><a class="nav-item nav-link" href="{% url 'logout'%}">Logout</a></li>
+					<li><a href="">New Post</a></li>
+					<li><a href="{% url 'profile'%}">Profile</a></li>
+					<li><a href="{% url 'logout'%}">Logout</a></li>
 				{% else %}
 					<li><a href="{% url 'login'%}">Login</a></li>
 					<li><a href="{% url 'register'%}">Register</a></li>
@@ -97,12 +97,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
 		<!-- Copyright / recycled to be links -->
-			<div id="copyright">
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/dan-trinh/" class="icon brands fa-linkedin"></a></li>
-					<li><a href="https://github.com/danny-trinh" class="icon brands fa-github"></a></li>
-				</ul>
-			</div>
+		<div id="copyright">
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/dan-trinh/" class="icon brands fa-linkedin"></a></li>
+				<li><a href="https://github.com/danny-trinh" class="icon brands fa-github"></a></li>
+			</ul>
+		</div>
 
 	</div>
 
