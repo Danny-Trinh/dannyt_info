@@ -1,0 +1,20 @@
+{% extends "portfolio/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form method = "POST" >
+    {% csrf_token %}
+    <h2>Login</h2>
+        {{ form|crispy }}
+    <div class="col-12">
+        <ul class="actions form_spaced" >
+            <li><button type="submit" class="primary">Log in</button></li>
+            <li><sub><a href=""> Forgot Password?</a></sub></li>
+        </ul>
+    </div>
+
+    <div>
+        <sub>Don't have a account?<a class="ml-2" href="{% url 'register' %}">   Sign Up</a></sub>
+    </div>
+</form>
+{% endblock content %}

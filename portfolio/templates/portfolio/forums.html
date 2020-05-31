@@ -1,0 +1,43 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+{% load static %}
+<section class="posts">
+    <article>
+        <header>
+        <span class="date">Fake date 24, 2017</span>
+            <h2><a href="#">Pokemon Gacha game</a></h2>
+        </header>
+        <a href="#" class="image fit"><img src="{%static 'portfolio/images/pic02.jpg' %}" alt="" /></a>
+        <p> This is a pokemon game that has japanese gacha mechanics and was a way for
+        me to play around with python and keeping track of databases</p>
+        <ul class="actions special">
+            <li><a href="#" class="button">View App</a></li>
+        </ul>
+    </article>
+    <article>
+        <header>
+            <span class="date">Fake date 24, 2017</span>
+            <h2><a href="#">Pygame project</a></h2>
+        </header>
+        <a href="#" class="image fit"><img src="{%static 'portfolio/images/pic03.jpg' %}" alt="" /></a>
+        <p> Still playing around with some python blah blah fill in text here when i get the chance</p>
+        <ul class="actions special">
+            <li><a href="#" class="button">View App</a></li>
+        </ul>
+    </article>
+</section>
+
+<footer>
+    <div class="pagination">
+        <!--<a href="#" class="previous">Prev</a>-->
+        <a href="#" class="page active">1</a>
+        <a href="#" class="page">2</a>
+        <a href="#" class="page">3</a>
+        <span class="extra">&hellip;</span>
+        <a href="#" class="page">8</a>
+        <a href="#" class="page">9</a>
+        <a href="#" class="page">10</a>
+        <a href="#" class="next">Next</a>
+    </div>
+</footer>
+{% endblock content %}

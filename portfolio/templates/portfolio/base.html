@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+{% load static %}
+<!--
+Massively by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	{% if title%}
+		<title>{{title}}</title>
+	{% else %}
+		<title>Default title</title>
+	{% endif %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet"  href="../../static/portfolio/css/main.css" />
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Intro -->
+		<div id="intro">
+			<h1>Hi There</h1>
+			<p> This is my portfolio website, welcome!</p>
+			<ul class="actions">
+				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+			</ul>
+		</div>
+
+		<!-- Header -->
+		<header id="header">
+			<a href="{% url 'home' %}" class="logo">My Projects</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li class="active"><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'forums' %}">Forums</a></li>
+			</ul>
+			<ul class="icons links" >
+				{% if user.is_authenticated %}
+					<li><a class="nav-item nav-link" href="">New Post</a></li>
+					<li><a class="nav-item nav-link" href="{% url 'profile'%}">Profile</a></li>
+					<li><a class="nav-item nav-link" href="{% url 'logout'%}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'login'%}">Login</a></li>
+					<li><a href="{% url 'register'%}">Register</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+
+
+		<!-- Main -->
+		{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{ message.tags}}">
+			{{ message }}
+		</div>
+			{% endfor %}
+		{% endif %}
+
+		<div id="main">
+		{% block content %}{% endblock %}
+		</div>
+
+<!--		&lt;!&ndash; Footer &ndash;&gt;-->
+<!--		<footer id="footer">-->
+<!--			<section class="split contact">-->
+<!--				<section>-->
+<!--					<h3>Social</h3>-->
+<!--					<ul class="icons alt">-->
+<!--						<li><a href="https://www.linkedin.com/in/dan-trinh/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>-->
+<!--						<li><a href="https://github.com/dtrinh403" class="icon brands alt fa-github"><span class="label">Github</span></a></li>-->
+<!--					</ul>-->
+<!--				</section>-->
+<!--			</section>-->
+<!--		</footer>-->
+
+		<!-- Copyright -->
+			<div id="copyright">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/dan-trinh/" class="icon brands fa-linkedin"></a></li>
+					<li><a href="https://github.com/danny-trinh" class="icon brands fa-github"></a></li>
+				</ul>
+			</div>
+
+	</div>
+
+	<!-- Scripts -->
+		<script src="{% static 'portfolio/js/jquery.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/browser.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/util.js' %}"></script>
+		<script src="{% static 'portfolio/js/main.js' %}"></script>
+		<script src="https://kit.fontawesome.com/73e5e68ac8.js" crossorigin="anonymous"></script>
+</body>
+</html>
