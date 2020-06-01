@@ -2,42 +2,38 @@
 {% block content %}
 {% load static %}
 <section class="posts">
-    <article>
-        <header>
-        <span class="date">Fake date 24, 2017</span>
-            <h2><a href="#">Pokemon Gacha game</a></h2>
+{% for project in object_list %}
+<article>
+<header>
+        <span class="date">{{project.date_posted}}</span>
+            <h2><a href="">{{project.title}}</a></h2>
         </header>
-        <a href="#" class="image fit"><img src="{%static 'portfolio/images/pic02.jpg' %}" alt="" /></a>
-        <p> This is a pokemon game that has japanese gacha mechanics and was a way for
-        me to play around with python and keeping track of databases</p>
+        <a href="{% url project.link %}" class="image fit"><img src="{{project.picture.url}}" /></a>
+        <p> {{project.content}}</p>
         <ul class="actions special">
-            <li><a href="#" class="button">View App</a></li>
+            <li><a href="{% url project.link %}" class="button">View App</a></li>
         </ul>
-    </article>
-    <article>
-        <header>
-            <span class="date">Fake date 24, 2017</span>
-            <h2><a href="#">Pygame project</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="{%static 'portfolio/images/pic03.jpg' %}" alt="" /></a>
-        <p> Still playing around with some python blah blah fill in text here when i get the chance</p>
-        <ul class="actions special">
-            <li><a href="#" class="button">View App</a></li>
-        </ul>
-    </article>
+</article>
 </section>
-
+{% endfor %}
 <footer>
     <div class="pagination">
-        <!--<a href="#" class="previous">Prev</a>-->
-        <a href="#" class="page active">1</a>
-        <a href="#" class="page">2</a>
-        <a href="#" class="page">3</a>
-        <span class="extra">&hellip;</span>
-        <a href="#" class="page">8</a>
-        <a href="#" class="page">9</a>
-        <a href="#" class="page">10</a>
-        <a href="#" class="next">Next</a>
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+              <a  href="?page={{ page_obj.previous_page_number}}">Prev</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <a href="?page={{ num}}">{{ num }}</a>
+              {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}">{{ num }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number}}">Next</a>
+            {% endif %}
+        {% endif %}
     </div>
 </footer>
+
 {% endblock content %}

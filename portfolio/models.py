@@ -5,11 +5,11 @@ from django.urls import reverse
 
 
 class Project(models.Model):
-    title = models.CharField(max_length = 100)
+    title = models.CharField(max_length=100)
     content = models.TextField()
-    date_posted = models.DateTimeField(default = timezone.now)
+    date_posted = models.DateTimeField(default=timezone.now)
     link = models.TextField()
-    # project_link = models.FilePathField()
+    picture = models.ImageField(default='project_default.jpg', upload_to='project_pics')
 
     def __str__(self):
         return self.title
