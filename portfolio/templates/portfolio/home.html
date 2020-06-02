@@ -4,15 +4,15 @@
 <section class="posts">
     {% for project in object_list %}
         <article>
-        <header>
-                <span class="date">{{project.date_posted}}</span>
-                    <h2><a href="">{{project.title}}</a></h2>
-                </header>
-                <a href="{% url project.link %}" class="image fit"><img src="{{project.picture.url}}" /></a>
-                <p> {{project.content}}</p>
-                <ul class="actions special">
-                    <li><a href="{% url project.link %}" class="button">View App</a></li>
-                </ul>
+            <header>
+                <span class="date">{{project.date_posted|date:"F d, Y" }}</span>
+                <h2><a href="">{{project.title}}</a></h2>
+            </header>
+            <a href="{% url project.link %}" class="image fit"><img src="{{project.picture.url}}" /></a>
+            <p> {{project.content}}</p>
+            <ul class="actions special">
+                <li><a href="{% url project.link %}" class="button">View App</a></li>
+            </ul>
         </article>
     {% endfor %}
 </section>
