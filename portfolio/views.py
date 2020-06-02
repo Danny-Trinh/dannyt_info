@@ -24,6 +24,7 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Danny's Projects"
+        context["title"] = "Homepage"
+        context["home"] = True
         return context
 
