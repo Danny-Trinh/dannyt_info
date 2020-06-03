@@ -80,7 +80,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 			</ul>
 			<ul class="links" style="flex-grow: 0">
 				{% if user.is_authenticated %}
-					<li><a href="">New Post</a></li>
+					<li><a href="{% url 'post-create' %}">New Post</a></li>
 					<li><a href="{% url 'profile'%}">Profile</a></li>
 					<li><a href="{% url 'logout'%}">Logout</a></li>
 				{% else %}

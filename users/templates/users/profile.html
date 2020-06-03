@@ -2,11 +2,14 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<span class="image left"> <h3>@{{user.profile}}</h3><img src="{{user.profile.picture.url}}" /></span>
+<span class="image left">
+    <h2 style="text-align:center">@{{user.profile}}</h2>
+    <img class="rounded-circle" style="width:12rem; height:12rem" src="{{user.profile.picture.url}}" />
+</span>
 
 <form method = "POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <fieldset class="form-group">
+    <fieldset>
         <legend class="border-bottom mb-4">Update Info</legend>
         {{ u_form|crispy }}
         {{ p_form|crispy }}

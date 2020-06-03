@@ -27,24 +27,40 @@ class ProjectListView(ListView):
 
 class UserPostListView(ListView):
     model = ForumPost
-    template_name = 'portfolio/forums.html'
-    paginate_by = 4
+    template_name = 'portfolio/user_post.html'
+    paginate_by = 8
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get("username"))
         return ForumPost.objects.filter(author=user).order_by('-date_posted')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = get_object_or_404(User, username=self.kwargs.get("username"))
+        context["title"] = "@" + user.username
+        return context
+
 
 class PostListView(ListView):
     model = ForumPost
     template_name = 'portfolio/forums.html'
-    paginate_by = 2
+    paginate_by = 4
     ordering = '-date_posted'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "User Posts"
+        return context
 
 
 # without setting template_name, this class auto-looks for template blog/post_detail
 class PostDetailView(DetailView):
     model = ForumPost
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "User Post"
+        return context
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -54,6 +70,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "New Post"
+        return context
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -69,6 +90,11 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         post = self.get_object()
         return self.request.user == post.author
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Post"
+        return context
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ForumPost
@@ -77,4 +103,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Delete Post"
+        return context
 

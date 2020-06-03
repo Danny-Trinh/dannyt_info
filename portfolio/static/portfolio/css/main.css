@@ -75,6 +75,18 @@ input, select, textarea {
 .form_spaced{
     margin-top: 1rem;
 }
+.profile_pic{
+    height: 4rem;
+    width: 4rem;
+}
+
+.content_section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
 
 /* Basic */
 
@@ -3866,9 +3878,8 @@ input, select, textarea {
 
 			#main > .posts > article {
 				border-color: #eeeeee;
-				border-left-width: 2px;
+
 				border-style: solid;
-				border-top-width: 2px;
 				text-align: center;
 			}
 

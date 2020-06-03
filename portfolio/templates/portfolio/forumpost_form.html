@@ -4,11 +4,11 @@
     <div class ="content-section">
         <form method = "POST" >
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Blog Post</legend>
+            <fieldset >
+                <legend class="border-bottom mb-4">Create Post</legend>
                 {{ form|crispy }}
             </fieldset>
-            <div class = "form-group">
+            <div>
                 <button class="btn btn-outline-info" type="submit">Post</button>
             </div>
         </form>
