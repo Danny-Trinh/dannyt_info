@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 
+
 <section class="posts">
     {% for post in object_list %}
         <article>
@@ -12,7 +13,7 @@
                 <h2 class="border-bottom mb-4"><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h2>
             </div>
             <div class="content">
-                <p> {{post.content|truncatewords:30}}</p>
+                <p> {{post.content|truncatewords:60}}</p>
             </div>
         </article>
     {% endfor %}

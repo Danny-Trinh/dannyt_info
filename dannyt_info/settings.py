@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pokemon.apps.PokemonConfig',
     'crispy_forms',
+    'storages',
+
 ]
 
 MIDDLEWARE = [
@@ -131,9 +133,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'home'
 
+# email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config.get("USER_EMAIL")
 EMAIL_HOST_PASSWORD = config.get("EMAIL_PASS")
+
+# aws settings
+AWS_ACCESS_KEY_ID = config.get("AWS_KEY")
+AWS_SECRET_ACCESS_KEY = config.get("AWS_PASS")
+AWS_STORAGE_BUCKET_NAME = config.get("AWS_BUCKET_NAME")
+#sets it so users cant overwrite old files with the same name
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'us-east-2'

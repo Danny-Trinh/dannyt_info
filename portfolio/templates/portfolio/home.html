@@ -1,15 +1,40 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
 {% load static %}
-<section class="posts">
+<style>
+    .custom_links{
+    position: absolute;
+    left: 75%;
+
+    }
+</style>
+{% if is_paginated or not page_obj.has_previous %}
+<section class="post" style="padding-top:4rem;padding-bottom:1rem">
+    <a href="{{resume.res.url}}" target="_blank">
+        <button class="custom_links" style="top: 4rem">resume</button>
+    </a>
+    <a href="#projects" class="scrolly"><button class="custom_links" style="top: 8rem">Projects</button></a>
+    <a href="#copyright" class="scrolly"><button href="" class="custom_links" style="top: 12rem">Social Media</button></a>
+
+
+    <h2>About Me</h2>
+    <p>I am a Computer Science student at the University of Texas at Austin.
+        </br> I love to code apps, this website for example!</a>
+        </br> I currently searching for internships that will help me grow as a programmer.
+        </br> I code mainly with python/java and am interested in all fields of computer science.
+    </p>
+</section>
+{% endif %}
+
+<section class="posts" id="projects">
     {% for project in object_list %}
         <article>
             <header>
                 <span class="date">{{project.date_posted|date:"F d, Y" }}</span>
-                <h2><a href="">{{project.title}}</a></h2>
+                <h2>{{project.title}}</h2>
             </header>
             <a href="{% url project.link %}" class="image fit"><img src="{{project.picture.url}}" /></a>
-            <p> {{project.content}}</p>
+            <p style="text-allign:left; line-height:1.6rem"> {{project.content}}</p>
             <ul class="actions special">
                 <li><a href="{% url project.link %}" class="button">View App</a></li>
             </ul>
@@ -21,17 +46,17 @@
     <div class="pagination">
         {% if is_paginated %}
             {% if page_obj.has_previous %}
-              <a  href="?page={{ page_obj.previous_page_number}}">Prev</a>
+              <a  href="?page={{ page_obj.previous_page_number}} #main">Prev</a>
             {% endif %}
             {% for num in page_obj.paginator.page_range %}
               {% if page_obj.number == num %}
-                <a href="?page={{ num}}" class="page active">{{ num }}</a>
+                <a href="?page={{ num}} #main" class="page active">{{ num }}</a>
               {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                 <a href="?page={{ num }}">{{ num }}</a>
               {% endif %}
             {% endfor %}
             {% if page_obj.has_next %}
-              <a href="?page={{ page_obj.next_page_number}}">Next</a>
+              <a href="?page={{ page_obj.next_page_number}} #main">Next</a>
             {% endif %}
         {% endif %}
     </div>

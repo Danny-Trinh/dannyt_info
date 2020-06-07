@@ -4,7 +4,7 @@ from django.views.generic import (ListView,
                                   CreateView,
                                   DeleteView,
                                   UpdateView)
-from .models import Project, ForumPost
+from .models import Project, ForumPost, Resume
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -20,14 +20,15 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Homepage"
+        context["title"] = "Danny Trinh"
         context["home"] = True
+        context["resume"] = Resume.objects.first()
         return context
 
 
 class UserPostListView(ListView):
     model = ForumPost
-    template_name = 'portfolio/user_post.html'
+    template_name = 'portfolio/forums.html'
     paginate_by = 8
 
     def get_queryset(self):
@@ -98,7 +99,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ForumPost
-    success_url = '/'
+    success_url = '/forums'
 
     def test_func(self):
         post = self.get_object()
