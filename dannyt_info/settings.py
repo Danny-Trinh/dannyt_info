@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import json
+# import json
 
-with open('/etc/dannyt_config.json') as config_file:
-    config = json.load(config_file)
+# with open('/etc/dannyt_config.json') as config_file:
+#     config = json.load(config_file)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -139,13 +139,13 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config.get("USER_EMAIL")
-EMAIL_HOST_PASSWORD = config.get("EMAIL_PASS")
+EMAIL_HOST_USER = os.environ.get("USER_EMAIL")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASS")
 
 # aws settings
-AWS_ACCESS_KEY_ID = config.get("AWS_KEY")
-AWS_SECRET_ACCESS_KEY = config.get("AWS_PASS")
-AWS_STORAGE_BUCKET_NAME = config.get("AWS_BUCKET_NAME")
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_KEY")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_PASS")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_BUCKET_NAME")
 #sets it so users cant overwrite old files with the same name
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
