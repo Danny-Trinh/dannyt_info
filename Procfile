@@ -1,1 +1,1 @@
-web: gunicorn django_project.wsgi
+web: gunicorn dannyt_info.wsgi
