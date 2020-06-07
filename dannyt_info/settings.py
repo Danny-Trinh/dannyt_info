@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("NO_DEBUG"):
-    DEBUG = False
+    DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com']
 
