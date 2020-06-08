@@ -28,9 +28,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned onherok in production!
 if os.environ.get("NO_DEBUG"):
-    DEBUG = True
+    DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com']
 
