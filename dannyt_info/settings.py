@@ -32,7 +32,7 @@ DEBUG = True
 if os.environ.get("NO_DEBUG"):
     DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com', 'dannyt.info']
 
 
 # Application definition
