@@ -8,20 +8,29 @@
     .custom_buttons{
     background-color: rgb(230, 230, 230, .1)
     }
+    .custom_profile{
+    width: 10rem;
+    height: 10rem;
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 8rem
+    }
 </style>
 {% if is_paginated or not page_obj.has_previous %}
-<section class="post" style="padding: 4rem 4rem 4rem 6rem">
-
-    <h2>About Me</h2>
-    <p>I am a Computer Science student at the University of Texas at Austin.
-        </br> I love to code apps, this website for example!
-        </br> I work with python/java and am currently searching for internships
-    </p>
-    <a class="custom_links" href="{{resume.res.url}}" target="_blank" class>
-        <button class="custom_buttons">resume</button>
-    </a>
-    <a class="custom_links scrolly" href="#projects"><button class="custom_buttons">Projects</button></a>
-    <a class="custom_links scrolly" href="#copyright"><button class="custom_buttons">Social Media</button></a>
+<section class="post featured">
+    <article>
+        <img class="custom_profile" src="{% static 'portfolio/images/me.png' %}" /></a>
+        <h2 style="text-align: left">About Me</h2>
+        <p style="text-align: left">I study Computer Science at the University of Texas at Austin.
+            I love to code apps, this website for example!
+            I work with python/java and am currently searching for internships.
+        </p>
+        <a class="custom_links" href="{{resume.res.url}}" target="_blank" class>
+            <button class="custom_buttons">resume</button>
+        </a>
+        <a class="custom_links scrolly" href="#projects"><button class="custom_buttons">Projects</button></a>
+        <a class="custom_links scrolly" href="#copyright"><button class="custom_buttons">Social Media</button></a>
+    </article>
 
 </section>
 {% endif %}
