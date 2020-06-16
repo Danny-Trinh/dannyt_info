@@ -35,6 +35,10 @@ if os.environ.get("NO_DEBUG"):
 ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com', 'dannyt.info', 'www.dannyt.info',
                  'animate-magnolia-oc86fu7ftvrsao7h21a6wj53.herokudns.com']
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/'
+)
+
 
 # Application definition
 
@@ -48,6 +52,9 @@ INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
     'users.apps.UsersConfig',
     'pokemon.apps.PokemonConfig',
+    'poke_api.apps.PokeApiConfig',
+    'corsheaders',
+    'rest_framework',
     'crispy_forms',
     'storages',
 

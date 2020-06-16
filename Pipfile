@@ -30,6 +30,8 @@ urllib3 = "==1.25.9"
 whitenoise = "==5.1.0"
 Django = "==3.0.6"
 Pillow = "==7.1.2"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
