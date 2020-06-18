@@ -4,6 +4,6 @@ from .serializers import PokemonSerializer
 from .models import Pokemon
 
 
-class PokeAPIView(viewsets.ModelViewSet):
+class PokemonView(viewsets.ModelViewSet):
     serializer_class = PokemonSerializer
     queryset = Pokemon.objects.all()

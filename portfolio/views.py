@@ -10,6 +10,15 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.models import User
 
+from rest_framework import viewsets
+from .serializers import ForumPostSerializer
+from .models import ForumPost
+
+
+class ForumAPIView(viewsets.ModelViewSet):
+    serializer_class = ForumPostSerializer
+    queryset = ForumPost.objects.all()
+
 
 # this is the "home view"
 class ProjectListView(ListView):
