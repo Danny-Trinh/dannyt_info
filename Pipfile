@@ -15,6 +15,7 @@ django-storages = "*"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+pokepy = "*"
 
 [requires]
 python_version = "3.8"

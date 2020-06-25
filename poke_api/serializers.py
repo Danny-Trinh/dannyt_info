@@ -7,7 +7,32 @@ class PokemonSerializer(serializers.ModelSerializer):
         model = Pokemon
         fields = ('trainer',
                   'name',
+
                   'species',
-                  'level',
+                  'number',
+
+                  'evolve_chain',
                   'gender',
+
+                  'sprite',
+                  'level',
+                  'iv',
+
+                  'b_hp',
+                  'b_defense',
+                  'b_attack',
+                  'b_s_defense',
+                  'b_s_attack',
+                  'b_speed',
+
+                  'hp',
+                  'defense',
+                  'attack',
+                  's_defense',
+                  's_attack',
+                  'speed',
+
+                  'prev_exp',
+                  'exp',
+                  'next_exp'
                   )
