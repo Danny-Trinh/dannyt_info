@@ -6,8 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-requests = "*"
-pokebase = "*"
 pillow = "*"
 django-heroku = "*"
 django-crispy-forms = "*"
@@ -15,7 +13,8 @@ django-storages = "*"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-pokepy = "*"
+requests = "*"
+pokebase = "*"
 
 [requires]
 python_version = "3.8"

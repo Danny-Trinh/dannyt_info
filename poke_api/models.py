@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import pokepy
-
-
-poke = pokepy.V2Client()
+import pokebase as poke
 
 
 # Create your models here.
@@ -17,7 +14,7 @@ class Pokemon(models.Model):
 
     # not calculated, most come from a list of established names or numbers
     species = models.CharField(max_length=30, default='venusaur')
-    number = models.CharField(max_length=30, default=3, editable=False)
+    number = models.CharField(max_length=30, default=3)
 
     # meta, doesnt change
     evolve_chain = models.IntegerField(default=0, editable=False)
@@ -25,6 +22,8 @@ class Pokemon(models.Model):
 
     # meta, will change
     sprite = models.URLField(default="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+                             editable=False)
+    main_pic = models.URLField(default="https://assets.pokemon.com/assets/cms2/img/pokedex/full/3.png",
                              editable=False)
     level = models.IntegerField(default=1, editable=False)
     iv = models.IntegerField(default=0, editable=False)
@@ -71,13 +70,16 @@ class Pokemon(models.Model):
         self.refresh_stats()
 
     def refresh_base(self):
-        p_stats = poke.get_pokemon(self.number).stats
+        p_stats = poke.pokemon(self.number).stats
         self.b_hp = p_stats[0].base_stat
         self.b_defense = p_stats[1].base_stat
         self.b_attack = p_stats[2].base_stat
         self.b_s_attack = p_stats[3].base_stat
         self.b_s_defense = p_stats[4].base_stat
         self.b_speed = p_stats[5].base_stat
+        print(f"hp: {self.b_hp}")
+        print(f"def: {self.b_defense}")
+        print(f"att: {self.b_attack}")
 
     def refresh_stats(self):
         self.hp = self.calc_hp()
@@ -88,18 +90,24 @@ class Pokemon(models.Model):
         self.speed = self.calc_stat(self.b_speed)
 
     def add_meta(self):
-        temp = poke.get_pokemon(self.species)
+        temp = poke.pokemon(self.species)
         self.sprite = temp.sprites.front_default
-        temp2 = poke.get_pokemon_species(self.species)
-        self.evolve_chain = temp
+        pic_string = f"https://assets.pokemon.com/assets/cms2/img/pokedex/full/{self.number.zfill(3)}.png"
+        self.main_pic = pic_string
+        temp2 = poke.pokemon_species(self.species)
+        self.evolve_chain = temp2.evolution_chain.id
+        print(f"pic: {self.sprite}")
+        print(f"evolve num: {self.evolve_chain}")
+        print(f"evolve num: {self.main_pic}")
 
     def __str__(self):
-        return self.name + " (" + self.b_species + ")"
+        return self.name + " (" + self.species + ")"
 
     def save(self, *args, **kwargs):
         if self._state.adding:
             self.refresh_base()
             self.refresh_stats()
+            self.add_meta()
         super().save(*args, **kwargs)
 
 
