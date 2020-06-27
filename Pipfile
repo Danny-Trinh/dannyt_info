@@ -16,6 +16,7 @@ django-cors-headers = "*"
 requests = "*"
 pokebase = "*"
 gunicorn = "*"
+boto3 = "*"
 
 [requires]
 python_version = "3.8"
