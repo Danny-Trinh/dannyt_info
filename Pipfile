@@ -15,6 +15,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 requests = "*"
 pokebase = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
