@@ -20,11 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from rest_framework import routers
-from poke_api import views as pokeview
+from pokemon import views as pokemon
 from portfolio import views
 
 router = routers.DefaultRouter()
-router.register(r'pokemons', pokeview.PokemonView, 'poke_api')
+router.register(r'pokemon', pokemon.PokemonView, 'pokemon')
 router.register(r'forum_posts', views.ForumAPIView, 'forum_posts')
 
 urlpatterns = [

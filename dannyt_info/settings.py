@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio.apps.PortfolioConfig',
     'users.apps.UsersConfig',
-    'poke_api.apps.PokeApiConfig',
+    'pokemon.apps.PokemonConfig',
     'corsheaders',
     'rest_framework',
     'crispy_forms',
