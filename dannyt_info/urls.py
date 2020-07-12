@@ -32,7 +32,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('', include('portfolio.urls')),
     path('', include('users.urls')),
-    path('', include('pokemon.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
