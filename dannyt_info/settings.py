@@ -29,8 +29,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True
 # SECURITY WARNING: don't run with debug turned on  in production!
-if os.environ.get("NO_DEBUG"):
-    DEBUG = False
+# if os.environ.get("NO_DEBUG"):
+#     DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'dannyt-app.herokuapp.com', 'dannyt.info', 'www.dannyt.info',
                  'animate-magnolia-oc86fu7ftvrsao7h21a6wj53.herokudns.com']
